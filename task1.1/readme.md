@@ -2,16 +2,17 @@
 *Working with GIT*
 
 1. Config globals
-* ![](/sreen/screen1.png)
+* ![alt text](/sreen/screen1.png)
+![alt text](sreen/screen1.png)
 
 2. Created repo on GitHub 
-* ![](sreen/screen2.png)
+* ![alt text](sreen/screen2.png)
 
 3. Clone repo to localhost
-* ![](sreen/screen3.png)
+![alt text](sreen/screen3.png)
 
 4. Make init
-* ![](sreen/screen4.png)
+![alt text](/sreen/screen4.png)
 
 5. Make branch **develop**
 * ![](sreen/screen5.png)
