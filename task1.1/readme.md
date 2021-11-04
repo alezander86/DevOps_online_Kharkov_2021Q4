@@ -2,7 +2,7 @@
 *Working with GIT*
 
 1. Config globals
-* ![](sreen/screen1.png)
+* ![](/sreen/screen1.png)
 
 2. Created repo on GitHub 
 * ![](sreen/screen2.png)
