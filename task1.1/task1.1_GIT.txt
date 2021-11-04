@@ -1,0 +1,15 @@
+b1bfddc (HEAD -> master, origin/master, origin/develop, develop) HEAD@{0}: merge develop: Fast-forward
+661fcfd HEAD@{1}: checkout: moving from develop to master
+b1bfddc (HEAD -> master, origin/master, origin/develop, develop) HEAD@{2}: commit (merge): fix merge conflict
+4abb8f3 (origin/images, images) HEAD@{3}: merge images: Fast-forward
+f495b2d HEAD@{4}: checkout: moving from styles to develop
+f4a9b2b (origin/styles, styles) HEAD@{5}: commit: add styles.css in index.html
+1d771d4 HEAD@{6}: commit: add styles folder and styles.css with source
+f495b2d HEAD@{7}: checkout: moving from develop to styles
+f495b2d HEAD@{8}: checkout: moving from images to develop
+4abb8f3 (origin/images, images) HEAD@{9}: commit: add images source index.html
+3172b0d HEAD@{10}: commit: add images folder and two images
+f495b2d HEAD@{11}: checkout: moving from develop to images
+f495b2d HEAD@{12}: commit: add index.html
+661fcfd HEAD@{13}: checkout: moving from master to develop
+661fcfd HEAD@{14}: commit (initial): init commit
