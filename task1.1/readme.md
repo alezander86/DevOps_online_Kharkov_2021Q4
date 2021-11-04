@@ -2,17 +2,16 @@
 *Working with GIT*
 
 1. Config globals
-* ![alt text](/sreen/screen1.png)
-![alt text](screen/screen1.png)
+* ![](screen/screen1.png)
 
-2. Created repo on GitHub 
-* ![alt text](screen/screen2.png)
+2. Created new repository on GitHub 
+* ![](screen/screen2.png)
 
-3. Clone repo to localhost
-![alt text](screen/screen3.png)
+3. Clone repo to your workstation
+* ![](screen/screen3.png)
 
-4. Make init
-![alt text](/screen/screen4.png)
+4. Make init commit
+* ![](screen/screen4.png)
 
 5. Make branch **develop**
 * ![](screen/screen5.png)
