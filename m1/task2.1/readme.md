@@ -67,30 +67,6 @@ High Availability & Resiliency
 * ![](screen/Screenshot_11.png)
 
 
-3. Configure different network modes for VM1, VM2.
-Connection Table
-
-<table>
-	<tr>	
-		<td>Mode</td><td>VM -> Host</td><td>VM <- Host</td><td>VM1 <-> VM2</td><td>VM -> Net/LAN</td><td>VM -> Net/LAN</td>
-	</tr>
-	<tr>
-		<td>Host-only</td><td>+</td><td>+</td><td>+</td><td>-</td><td>-</td>
-	</tr>
-	<tr>
-		<td>Internal</td><td>-</td><td>-</td><td>+</td><td>-</td><td>-</td>
-	</tr>
-	<tr>
-		<td>Bridged</td><td>+</td><td>+</td><td>+</td><td>+</td><td>+</td>
-	</tr>
-	<tr>
-		<td>NAT</td><td>+</td><td><a href="https://www.virtualbox.org/manual/UserManual.html#natforward">Port forward</a></td><td>-</td><td>+</td><td><a href="https://www.virtualbox.org/manual/UserManual.html#natforward">Port forward</a></td>
-	</tr>
-	<tr>
-		<td>NATservice</td><td>+</td><td><a href="https://www.virtualbox.org/manual/UserManual.html#network_nat_service">Port forward</a></td><td>+</td><td>+</td><td><a href="https://www.virtualbox.org/manual/UserManual.html#network_nat_service">Port forward</a></td>
-	</tr>
-</table>  
-
 4. Configure different network modes for VM1_TARYRAIEV, VM2_TARYRAIEV.
 
 ### **Table of mode connections**
