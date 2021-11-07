@@ -118,9 +118,9 @@ High Availability & Resiliency
 * ![](screen/Screenshot_26.png)
 
 6. Stop and delete VM
-* ![](screen/vag6.png)
+* ![](screen/Screenshot_27.png)
 
 7. Create own vagrant box
-* ![](screen/vag7.png)
+* ![](screen/Screenshot_28.png)
 
 -----------
