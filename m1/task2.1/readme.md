@@ -4,20 +4,19 @@
 
 ***1. Native Hypervisors.
 They runs directly on the host's hardware to control the hardware and to manage guest operating 
-** VMware ESX
-** Microsoft Hyper-V
-** Citrix XenServer
-** Oracle VM Server for SPARC
-** Oracle VM Server for x86
-** Nutanix AHV
+* VMware ESX
+* Microsoft Hyper-V
+* Citrix XenServer
+* Oracle VM Server for SPARC
+* Oracle VM Server for x86
 
 ***2. Hosted Hypervisors.
 They runs on a conventional operating system (OS) just as other computer programs do. A guest operating system runs as a process on the host.
-** VMware Workstation
-** VirtualBox 
-** Microsoft Virtual PC
-** QEMU 
-** Parallels Desktop for Mac
+* VMware Workstation
+* VirtualBox 
+* Microsoft Virtual PC
+* QEMU 
+* Parallels Desktop for Mac
 
 ### **Features of popular Hypervisors**
 ** 2. Briefly describe the main differences of the most popular hypervisors.
