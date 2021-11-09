@@ -135,19 +135,31 @@
 * Working process
   Github commit -> GH actions -> copy files to s3 bucket
 
-* ![](screen/Screenshot_39.png)
+1. add user and save keys for bucket
 
 * ![](screen/Screenshot_40.png)
+
+* ![](screen/Screenshot_39.png)
+
+2. Change bucket block and policy
 
 * ![](screen/Screenshot_41.png)
 
 * ![](screen/Screenshot_42.png)
 
+3. Copy bucket website endpoint
+
 * ![](screen/Screenshot_43.png)
+
+4. Add actions secrets keys for s3bucket
 
 * ![](screen/Screenshot_44.png)
 
+4. Add github workflow and make first commit.
+
 * ![](screen/Screenshot_45.png)
+
+5. Open link bucket website endpoint
 
 * ![](screen/Screenshot_46.png)
 
