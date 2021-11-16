@@ -167,4 +167,14 @@
 
 * Github repo with site:  https://github.com/alezander86/s3-static
 
+6. Connect domain to s3-website
+
+* ![](screen/Screenshot_47.png)
+
+* ![](screen/Screenshot_48.png)
+
+* ![](screen/Screenshot_49.png)
+
+* s3 site : http://taryraiev.pp.ua/
+
 ----------------
