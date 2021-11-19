@@ -54,24 +54,24 @@
 * ![](screen/Screenshot_12.png)
 
 Router#conf t
-Enter configuration commands, one per line.  End with CNTL/Z.
-Router(config-if)#interface GigabitEthernet0/0.2
-Router(config-subif)#encapsulation dot1Q 2
-Router(config-subif)#eneip address 4.13.86.1 255.255.255.192
-Router(config-subif)#interface GigabitEthernet0/0.3
-Router(config-subif)#
-%LINK-5-CHANGED: Interface GigabitEthernet0/0.3, changed state to up
+Enter configuration commands, one per line.  End with CNTL/Z.<br/>
+Router(config-if)#interface GigabitEthernet0/0.2<br/>
+Router(config-subif)#encapsulation dot1Q 2<br/>
+Router(config-subif)#eneip address 4.13.86.1 255.255.255.192<br/>
+Router(config-subif)#interface GigabitEthernet0/0.3<br/>
+Router(config-subif)#<br/>
+%LINK-5-CHANGED: Interface GigabitEthernet0/0.3, changed state to up<br/>
 
-%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.3, changed state to up
-interface GigabitEthernet0/0.3
-Router(config-subif)#interface GigabitEthernet0/0.3
-Router(config-subif)#encapsuip address 4.13.86.1 255.255.255.192ip address 4.13.86.65 255.255interface GigabitEthernet0/0.3interface GigabitEthernet0/0.4
-Router(config-subif)#
-%LINK-5-CHANGED: Interface GigabitEthernet0/0.4, changed state to up
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.3, changed state to up<br/>
+interface GigabitEthernet0/0.3<br/>
+Router(config-subif)#interface GigabitEthernet0/0.3<br/>
+Router(config-subif)#encapsuip address 4.13.86.1 255.255.255.192ip address 4.13.86.65 255.255interface GigabitEthernet0/0.3interface<br/> GigabitEthernet0/0.4<br/>
+Router(config-subif)#<br/>
+%LINK-5-CHANGED: Interface GigabitEthernet0/0.4, changed state to up<br/>
 
-%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.4, changip address 4.13.encapsulation dot1Q 3encapsip address 4.13.86.65 255.255.255.192ip address 4.13.86.129 255.255.255.192
-Router(config-subif)#eiexit
-Router(config)#txtexit
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.4, changip address 4.13.encapsulation dot1Q 3encapsip address 4.13.86.65<br/> 255.255.255.192ip address 4.13.86.129 255.255.255.192<br/>
+Router(config-subif)#eiexit<br/>
+Router(config)#txtexit<br/>
 
 15. Change Gateways
 
