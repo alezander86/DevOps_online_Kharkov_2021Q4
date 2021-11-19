@@ -24,3 +24,59 @@
 *Destination IP Address: 192.168.88.103 <br/>
 *Source TCP Port : 443 <br/>
 *Destination TCP port: 60184 <br/>
+
+# Task 3.2 Vlan and connection of different networks
+
+5 and 6 Check ping to the DefaultGateways
+
+* ![](screen/Screenshot_5.png)
+
+* ![](screen/Screenshot_6.png)
+
+* ![](screen/Screenshot_7.png)
+
+7. Change mask to the 255.255.255.192 and check ping.
+
+* ![](screen/Screenshot_8.png)
+
+* ![](screen/Screenshot_9.png)
+
+8. There is a ping only between web server 1 and the gateway, since they are in the same subnet range.
+
+* ![](screen/Screenshot_10.png)
+
+10. There will be no ping due to the lack of routes between Vlans on the switch
+
+* ![](screen/Screenshot_11.png)
+
+12. Configuring inter-Vlan routing
+
+* ![](screen/Screenshot_12.png)
+
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config-if)#interface GigabitEthernet0/0.2
+Router(config-subif)#encapsulation dot1Q 2
+Router(config-subif)#eneip address 4.13.86.1 255.255.255.192
+Router(config-subif)#interface GigabitEthernet0/0.3
+Router(config-subif)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0.3, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.3, changed state to up
+interface GigabitEthernet0/0.3
+Router(config-subif)#interface GigabitEthernet0/0.3
+Router(config-subif)#encapsuip address 4.13.86.1 255.255.255.192ip address 4.13.86.65 255.255interface GigabitEthernet0/0.3interface GigabitEthernet0/0.4
+Router(config-subif)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0.4, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.4, changip address 4.13.encapsulation dot1Q 3encapsip address 4.13.86.65 255.255.255.192ip address 4.13.86.129 255.255.255.192
+Router(config-subif)#eiexit
+Router(config)#txtexit
+
+15. Change Gateways
+
+* ![](screen/Screenshot_13.png)
+
+16. Testing connection by ping
+
+* ![](screen/Screenshot_14.png)
