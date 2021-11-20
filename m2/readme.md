@@ -53,6 +53,8 @@
 
 * ![](screen/Screenshot_12.png)
 
+* ![](screen/Screenshot_15.png)
+
 Router#conf t
 Enter configuration commands, one per line.  End with CNTL/Z.<br/>
 Router(config-if)#interface GigabitEthernet0/0.2<br/>
@@ -80,3 +82,20 @@ Router(config)#txtexit<br/>
 16. Testing connection by ping
 
 * ![](screen/Screenshot_14.png)
+
+# Task 3.3 Routing settings
+ 
+1. In Task 3.2.2 my internet connection is 23.4.86.00/26
+
+* ![](screen/Screenshot_16.png)
+
+* ![](screen/Screenshot_17.png)
+
+2. Configure routing on the HomeRouter 
+
+* ![](screen/Screenshot_18.png)
+
+3. Check network performance using the ping and tracert commands between Client1 and WebServer2.
+
+* ![](screen/Screenshot_19.png)
+
