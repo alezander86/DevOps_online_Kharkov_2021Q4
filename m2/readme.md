@@ -122,3 +122,25 @@ Router(config)#txtexit<br/>
 * ![](screen/Screenshot_25.png)
 
 * ![](screen/Screenshot_24.png)
+
+# PortForwarding on the HomeRouter
+
+1. Add HomeServer and ip
+
+* ![](screen/Screenshot_26.png)
+
+2. Change index.html on the HomeServer
+
+* ![](screen/Screenshot_27.png)
+
+3. Add PortForwarding on the HomeRouter
+
+* ![](screen/Screenshot_28.png)
+
+4. Add DNS address to the DNSServer
+
+* ![](screen/Screenshot_29.png)
+
+5. Open for test on Client1 site domain3.com
+
+* ![](screen/Screenshot_30.png)
