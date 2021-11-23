@@ -99,3 +99,26 @@ Router(config)#txtexit<br/>
 
 * ![](screen/Screenshot_19.png)
 
+# Task 3.4 DHCP, DNS, NAT configuration
+
+1. Setting up DHCPPool
+
+* ![](screen/Screenshot_20.png)
+
+2. Client1 and Client2 DHCP settings
+
+* ![](screen/Screenshot_21.png)
+
+3. Set up DHCP on Home Router and test
+
+* ![](screen/Screenshot_22.png)
+
+4. Add DNS records to DNS server
+
+* ![](screen/Screenshot_23.png)
+
+5. Added DNS to DHCP server and updated Client and Client 2 DHCP settings and test by ping
+
+* ![](screen/Screenshot_25.png)
+
+* ![](screen/Screenshot_24.png)
