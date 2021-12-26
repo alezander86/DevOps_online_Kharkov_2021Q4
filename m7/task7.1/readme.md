@@ -13,8 +13,9 @@
 ** 3. The --target key displays a list of open system TCP ports.
 
 * ![](screen/Screenshot_3.png)
+
 <details>
-	<summary>script text</summary>
+	<summary>bash script</summary>
 
   ```
 #!/bin/bash
@@ -53,12 +54,31 @@ fi
 ** B. Using Apache log example create a script to answer the following questions:
 
 ** 1. From which ip were the most requests?
+
+* ![](screen/Screenshot_4.png)
+
 ** 2. What is the most requested page? 
+
+* ![](screen/Screenshot_5.png)
+
 ** 3. How many requests were there from each ip? 
+
+* ![](screen/Screenshot_6.png)
+
 ** 4. What non-existent pages were clients referred to?  
+
+* ![](screen/Screenshot_7.png)
+
 ** 5. What time did site get the most requests? 
+
+* ![](screen/Screenshot_8.png)
+
 ** 6. What search bots have accessed the site? (UA + IP)
 
+* ![](screen/Screenshot_9.png)
+
 ** C. Create a data backup script that takes the following data as parameters:
+
 ** 1. Path to the syncing  directory.
+
 ** 2. The path to the directory where the copies of the files will be stored.In case of adding new or deleting old files, the script must add a corresponding entry to the log file indicating the time, type of operation and file name. [The command to run the script must be added to crontab with a run frequency of one minute]
