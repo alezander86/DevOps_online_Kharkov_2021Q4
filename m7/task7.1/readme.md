@@ -125,7 +125,60 @@ fi
 ** C. Create a data backup script that takes the following data as parameters:
 
 ** 1. Path to the syncing  directory.
-
 ** 2. The path to the directory where the copies of the files will be stored.
 
+* ![](screen/Screenshot_10.png)
+
+* ![](screen/Screenshot_11.png)
+
+* ![](screen/Screenshot_12.png)
+
 In case of adding new or deleting old files, the script must add a corresponding entry to the log file indicating the time, type of operation and file name. [The command to run the script must be added to crontab with a run frequency of one minute]
+
+* ![](screen/Screenshot_13.png)
+
+<details>
+	<summary>bash script</summary>
+
+  ```
+#!/bin/bash
+
+## source directory
+
+sd="$1"
+
+## destination directory
+
+dt="$2"
+
+#log file
+
+log="/home/taryraiev/copy.log"
+
+## current date
+
+date=$(date '+%d.%m.%Y_%H:%M:%S');
+
+#####################################
+
+add="$(diff -arq $sd $dt | sed 's/Only in \([^ ]*\): /\1\//' | grep $sd)"
+delete="$(diff -arq $sd $dt | sed 's/Only in \([^ ]*\): /\1\//' | grep $dt)"
+
+if [ ! -z "$add" ];
+then
+
+cp -a $add $dt
+echo "$date upload $add" >> $log
+
+elif [ ! -z "$delete" ];
+then
+
+echo "$date delete $delete" >> $log
+rm -rf $delete
+
+else
+echo "no files to sync"
+
+fi
+  ```
+</details>
