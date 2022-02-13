@@ -3,7 +3,6 @@ pipeline {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
         APP_IP = ''
-        THEJOB="${JOB_NAME.substring(JOB_NAME.lastIndexOf('/') + 1, JOB_NAME.length())}"
     }
     agent any  /*{
         docker {
@@ -12,14 +11,16 @@ pipeline {
             } 
         }
     */
+    //used tools
 	  tools {
           terraform 'terraform'
           maven '3.8.4'
 		}
+    // 
     stages {
         stage("Build and test app") {
           stages {
-            stage("testing stage") {
+            stage("Testing stage") {
               steps {
                 dir ('petclinic') {
                    sh 'sh mvnw test'
@@ -42,62 +43,79 @@ pipeline {
                 }
               }
             }
-
           }
         }
+        //AWS provider init
         stage('Terraform Init'){
 		      steps{
+            checkout scm
+            dir ('terraform') {
 				    sh label: '', script: 'terraform init'
-		  	  }
-	      }
+		  	    }
+	        }
+        }
 	    	stage('Terraform apply'){
-		      steps{
-				    sh label: '', script: 'terraform apply -auto-approve'
-			   	  //sh label: '', script: 'terraform destroy -auto-approve'
+          steps{
+            checkout scm
+            dir ('terraform') {
+				      sh label: '', script: 'terraform apply -auto-approve'
+			   	    //sh label: '', script: 'terraform destroy -auto-approve'
 			    
             script {
                 APP_IP = sh(returnStdout: true, script: "terraform output -raw Webserver_public_ip").trim()
                 }
-                writeFile (file: '../ansible/hosts.txt', text: '[app]\n' + APP_IP + '\n')
+                // write env form ansible script
+                writeFile (file: '../ansible/hosts.txt', text: '[app]\n' + APP_IP)
+              }
 			    }
-			 
-	      }
+			  }
 
+        stage('Time to build env on Webserver'){
+          steps {
+            timeout(time: 2, unit: 'MINUTES'){
+              sh 'echo timeout 2 min'
+            }
+          }
+        }
+      
 	      stage('App environment configuring with ansible') {
           steps {
             dir ('ansible') {
-              sh 'echo now you are in the'
-              sh 'pwd'
               sh 'ansible-playbook app.yml'
+            }
+          }
+        }
+      
+        stage('Time to start app with message'){
+          steps {
+            timeout(time: 3, unit: 'MINUTES'){
+              sh 'echo timeout 3 min'
             }
           }
         }
       }
 
-
+       
     post {
      success { 
         withCredentials([string(credentialsId: 'telegram_token', variable: 'TOKEN'), string(credentialsId: 'telegram_chat_id', variable: 'CHAT_ID')]) {
         sh  ("""
-            curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendMessage -d chat_id=${CHAT_ID} -d parse_mode=markdown -d text='*${env.JOB_NAME}* : POC *Branch*: ${env.GIT_BRANCH} $APP_IP *Build* : OK *Published* = YES'
+            curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendMessage -d chat_id=${CHAT_ID} -d parse_mode=markdown -d text='*${env.JOB_NAME}* : POC *Branch*: ${env.GIT_BRANCH} $APP_IP:8080 *Build* : OK *Published* = YES'
         """)
         }
-     }
-
+      }
      aborted {
         withCredentials([string(credentialsId: 'telegram_token', variable: 'TOKEN'), string(credentialsId: 'telegram_chat_id', variable: 'CHAT_ID')]) {
         sh  ("""
             curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendMessage -d chat_id=${CHAT_ID} -d parse_mode=markdown -d text='*${env.JOB_NAME}* : POC *Branch*: ${env.GIT_BRANCH} *Build* : `Aborted` *Published* = `Aborted`'
         """)
-        }
-     
-     }
+        }    
+      }
      failure {
         withCredentials([string(credentialsId: 'telegram_token', variable: 'TOKEN'), string(credentialsId: 'telegram_chat_id', variable: 'CHAT_ID')]) {
         sh  ("""
             curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendMessage -d chat_id=${CHAT_ID} -d parse_mode=markdown -d text='*${env.JOB_NAME}* : POC  *Branch*: ${env.GIT_BRANCH} *Build* : `not OK` *Published* = `no`'
         """)
-        
       }
     }
   }

@@ -1,11 +1,20 @@
+---
 - name: Copy app and starting app
   hosts: app
   become: yes
-   tasks:
-  - name: Update and upgrade apt packages
-    apt:
-      update_cache: yes
-      cache_valid_time: 86400 
-  
-  - name: Install Docker
+
+  tasks:
+  - name: Install openjdk
     apt: name=openjdk-8-jre state=latest
+
+  - name: Copying app file 
+    copy:
+        src: /var/lib/jenkins/workspace/final_project/app.jar
+        dest: /home/user/
+
+  - name: Stop jar
+    shell: nohup java -jar /home/user/app.jar stop &
+
+  - name: Start jar
+    shell: nohup java -jar /home/user/app.jar &
+  
