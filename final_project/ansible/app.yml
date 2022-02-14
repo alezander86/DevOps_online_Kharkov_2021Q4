@@ -1,20 +1,24 @@
 ---
 - name: Copy app and starting app
   hosts: app
-  become: yes
+  remote_user: ubuntu
 
   tasks:
-  - name: Install openjdk
-    apt: name=openjdk-8-jre state=latest
-
-  - name: Copying app file 
+  - name: Copying file with 
     copy:
         src: /var/lib/jenkins/workspace/final_project/app.jar
-        dest: /home/user/
+        dest: /home/ubuntu/
+
+  - name: Update apt-get repo and cache
+    apt: update_cache=yes force_apt_get=yes
+    become: yes
+    
+  - name: Install openjdk
+    apt: name=openjdk-8-jre state=latest force_apt_get=yes
+    become: yes
 
   - name: Stop jar
-    shell: nohup java -jar /home/user/app.jar stop &
+    shell: nohup java -jar /home/ubuntu/app.jar stop &
 
   - name: Start jar
-    shell: nohup java -jar /home/user/app.jar &
-  
+    shell: nohup java -jar /home/ubuntu/app.jar &

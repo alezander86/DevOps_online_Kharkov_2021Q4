@@ -45,54 +45,45 @@ pipeline {
             }
           }
         }
-        //AWS provider init
-        stage('Terraform Init'){
-		      steps{
-            checkout scm
-            dir ('terraform') {
-				    sh label: '', script: 'terraform init'
-		  	    }
-	        }
-        }
-	    	stage('Terraform apply'){
-          steps{
-            checkout scm
-            dir ('terraform') {
-				      sh label: '', script: 'terraform apply -auto-approve'
-			   	    //sh label: '', script: 'terraform destroy -auto-approve'
-			    
-            script {
-                APP_IP = sh(returnStdout: true, script: "terraform output -raw Webserver_public_ip").trim()
-                }
-                // write env form ansible script
-                writeFile (file: '../ansible/hosts.txt', text: '[app]\n' + APP_IP)
+        ////AWS provider init
+        stage("Terraform") {
+          stages {
+            stage('Terraform Init'){
+              steps{
+                checkout scm
+                dir ('terraform') {
+                sh label: '', script: 'terraform init'
+		  	        }
               }
-			    }
-			  }
-
-        stage('Time to build env on Webserver'){
-          steps {
-            timeout(time: 2, unit: 'MINUTES'){
-              sh 'echo timeout 2 min'
             }
+   
+	         	stage('Terraform apply'){
+              steps{
+                checkout scm
+                dir ('terraform') {
+				          sh label: '', script: 'terraform apply -auto-approve'
+			   	        //sh label: '', script: 'terraform destroy -auto-approve'
+			    
+              script {
+                  APP_IP = sh(returnStdout: true, script: "terraform output -raw Webserver_public_ip").trim()
+                  }
+                  // write env form ansible script
+                  writeFile (file: '../ansible/hosts.txt', text: '[app]\n' + APP_IP)
+                } 
+			        }
+			      }
           }
         }
-      
+   
 	      stage('App environment configuring with ansible') {
           steps {
-            dir ('ansible') {
+              dir ('ansible') {
+              sh 'sleep 120'
               sh 'ansible-playbook app.yml'
+              sh 'sleep 30'
             }
           }
-        }
-      
-        stage('Time to start app with message'){
-          steps {
-            timeout(time: 3, unit: 'MINUTES'){
-              sh 'echo timeout 3 min'
-            }
-          }
-        }
+        } 
       }
 
        
